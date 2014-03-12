@@ -1,217 +1,193 @@
 first, diff:
 $ cd testing
-$ diff --brief test1 test2 > test1.vs.test2
-$ diff --brief test1 test3 > test1.vs.test3
-$ diff --brief test2 test3 > test2.vs.test3
+$ diff --brief -s -r test1 test2 > test1.vs.test2
+$ diff --brief -s -r test1 test3 > test1.vs.test3
+$ diff --brief -s -r test2 test3 > test2.vs.test3
 
-$ ./treeverse.js testing/test2.vs.test3 testing/test1.vs.test3
 
+$ ./treeverse.js testing/test2.vs.test3 testing/test1.vs.test2 testing/test1.vs.test3
 Showing similarities for: testing/test2.vs.test3
+1/2/3/4/5/6/7/8
+Showing similarities for: testing/test1.vs.test2
 1/2/3/4
-1/2/3/4/5/6
 Showing similarities for: testing/test1.vs.test3
-/1
-Showing similarities for: testing/test2.vs.test3 + testing/test1.vs.test3
-1/2/3/4
+1/2/3/4/5/6/7/8
+Showing similarities for: testing/test2.vs.test3 + testing/test1.vs.test2 + testing/test1.vs.test3
+1/2/3/4/5/6/7/8
 
 
 
-$ DEBUG=1 ./treeverse.js testing/test2.vs.test3 testing/test1.vs.test3
+$ DEBUG=1 ./treeverse.js testing/test2.vs.test3 testing/test1.vs.test2 testing/test1.vs.test3
 
 Showing similarities for: testing/test2.vs.test3
-{ test2: 
-   { same: 0,
-     diff: 2,
+{ '1': 
+   { same: 1,
+     diff: 3,
      child: 
-      { '1': 
-         { same: 0,
-           diff: 2,
+      { '2': 
+         { same: 1,
+           diff: 3,
            child: 
-            { '2': 
-               { same: 0,
-                 diff: 2,
+            { '3': 
+               { same: 1,
+                 diff: 3,
                  child: 
-                  { '3': 
-                     { same: 0,
-                       diff: 2,
-                       child: 
-                        { '4': 
-                           { same: 0,
-                             diff: 0,
-                             child: 
-                              { '5': 
-                                 { same: 0,
-                                   diff: 0,
-                                   child: 
-                                    { '6': 
-                                       { same: 0,
-                                         diff: 0,
-                                         child: 
-                                          { '7': 
-                                             { same: 0,
-                                               diff: 0,
-                                               child: 
-                                                { '8': 
-                                                   { same: 0,
-                                                     diff: 0,
-                                                     child: 
-                                                      { diff: 1,
-                                                        'hello.txt': { same: 0, diff: 0, child: { diff: 1 } } } },
-                                                  diff: 1 } },
-                                            diff: 1 } },
-                                      diff: 1 } },
-                                diff: 1 } },
-                          diff: 1 } },
-                    diff: 1 } },
-              diff: 1 } },
-        diff: 1 } },
-  test3: 
-   { same: 0,
-     diff: 1,
-     child: 
-      { '1': 
-         { same: 0,
-           diff: 1,
-           child: 
-            { '2': 
-               { same: 0,
-                 diff: 1,
-                 child: 
-                  { '3': 
-                     { same: 0,
+                  { '4': 
+                     { same: 1,
                        diff: 1,
                        child: 
-                        { '4': 
-                           { same: 0,
+                        { '5': 
+                           { same: 1,
                              diff: 1,
                              child: 
-                              { '5': 
+                              { '6': 
                                  { same: 0,
                                    diff: 1,
                                    child: 
-                                    { '6': 
+                                    { '7': 
                                        { same: 0,
-                                         diff: 0,
-                                         child: { '7': { same: 0, diff: 0, child: { diff: 1 } }, diff: 1 } },
-                                      diff: 1 } },
-                                diff: 1 } },
-                          diff: 1 } },
-                    diff: 1 } },
-              diff: 1 } },
-        diff: 1 } } }
-Showing similarities for: testing/test1.vs.test3
-{ test3: 
-   { same: 0,
-     diff: 0,
-     child: 
-      { '1': 
-         { same: 0,
-           diff: 0,
-           child: 
-            { '2': 
-               { same: 0,
-                 diff: 0,
-                 child: 
-                  { '3': 
-                     { same: 0,
-                       diff: 0,
-                       child: 
-                        { '4': 
-                           { same: 0,
-                             diff: 0,
-                             child: 
-                              { '5': 
-                                 { same: 0,
-                                   diff: 0,
-                                   child: 
-                                    { '6': 
-                                       { same: 0,
-                                         diff: 0,
-                                         child: { '7': { same: 0, diff: 0, child: { diff: 1 } }, diff: 1 } },
-                                      diff: 1 } },
-                                diff: 1 } },
-                          diff: 1 } },
-                    diff: 1 } },
-              diff: 1 } },
-        diff: 1 } } }
-Showing similarities for: testing/test2.vs.test3 + testing/test1.vs.test3
-{ test2: 
-   { same: 0,
-     diff: 2,
-     child: 
-      { '1': 
-         { same: 0,
-           diff: 2,
-           child: 
-            { '2': 
-               { same: 0,
-                 diff: 2,
-                 child: 
-                  { '3': 
-                     { same: 0,
-                       diff: 2,
-                       child: 
-                        { '4': 
-                           { same: 0,
-                             diff: 0,
-                             child: 
-                              { '5': 
-                                 { same: 0,
-                                   diff: 0,
-                                   child: 
-                                    { '6': 
-                                       { same: 0,
-                                         diff: 0,
+                                         diff: 1,
                                          child: 
-                                          { '7': 
+                                          { '8': 
                                              { same: 0,
                                                diff: 0,
                                                child: 
-                                                { '8': 
-                                                   { same: 0,
-                                                     diff: 0,
-                                                     child: 
-                                                      { diff: 1,
-                                                        'hello.txt': { same: 0, diff: 0, child: { diff: 1 } } } },
-                                                  diff: 1 } },
-                                            diff: 1 } },
-                                      diff: 1 } },
-                                diff: 1 } },
-                          diff: 1 } },
-                    diff: 1 } },
-              diff: 1 } },
-        diff: 1 } },
-  test3: 
-   { same: 0,
+                                                { same: 1,
+                                                  'hello.txt': { same: 0, diff: 0, child: { same: 1 } } } },
+                                            same: 1 } },
+                                      same: 1 } },
+                                same: 1,
+                                'hi.txt': { same: 0, diff: 0, child: { same: 1 } } } },
+                          same: 1 } },
+                    same: 1 } },
+              same: 1 } },
+        same: 1 } } }
+Showing similarities for: testing/test1.vs.test2
+{ '1': 
+   { same: 1,
      diff: 2,
      child: 
-      { '1': 
-         { same: 0,
+      { '2': 
+         { same: 1,
            diff: 2,
            child: 
-            { '2': 
-               { same: 0,
+            { '3': 
+               { same: 1,
                  diff: 2,
                  child: 
-                  { '3': 
-                     { same: 0,
-                       diff: 2,
+                  { '4': 
+                     { same: 1,
+                       diff: 0,
                        child: 
-                        { '4': 
-                           { same: 0,
-                             diff: 2,
+                        { '5': 
+                           { same: 1,
+                             diff: 0,
                              child: 
-                              { '5': 
+                              { '6': 
                                  { same: 0,
-                                   diff: 2,
+                                   diff: 0,
                                    child: 
-                                    { '6': 
+                                    { '7': 
+                                       { same: 0,
+                                         diff: 0,
+                                         child: 
+                                          { '8': 
+                                             { same: 0,
+                                               diff: 0,
+                                               child: 
+                                                { same: 1,
+                                                  'hello.txt': { same: 0, diff: 0, child: { same: 1 } } } },
+                                            same: 1 } },
+                                      same: 1 } },
+                                same: 1,
+                                'hi.txt': { same: 0, diff: 0, child: { same: 1 } } } },
+                          same: 1 } },
+                    same: 1 } },
+              same: 1 } },
+        same: 1 } } }
+Showing similarities for: testing/test1.vs.test3
+{ '1': 
+   { same: 1,
+     diff: 1,
+     child: 
+      { '2': 
+         { same: 1,
+           diff: 1,
+           child: 
+            { '3': 
+               { same: 1,
+                 diff: 1,
+                 child: 
+                  { '4': 
+                     { same: 1,
+                       diff: 1,
+                       child: 
+                        { '5': 
+                           { same: 1,
+                             diff: 1,
+                             child: 
+                              { '6': 
+                                 { same: 0,
+                                   diff: 1,
+                                   child: 
+                                    { '7': 
                                        { same: 0,
                                          diff: 1,
-                                         child: { '7': { same: 0, diff: 1, child: { diff: 1 } }, diff: 1 } },
-                                      diff: 1 } },
-                                diff: 1 } },
-                          diff: 1 } },
-                    diff: 1 } },
-              diff: 1 } },
-        diff: 1 } } }
+                                         child: 
+                                          { '8': 
+                                             { same: 0,
+                                               diff: 0,
+                                               child: 
+                                                { same: 1,
+                                                  'hello.txt': { same: 0, diff: 0, child: { same: 1 } } } },
+                                            same: 1 } },
+                                      same: 1 } },
+                                same: 1,
+                                'hi.txt': { same: 0, diff: 0, child: { same: 1 } } } },
+                          same: 1 } },
+                    same: 1 } },
+              same: 1 } },
+        same: 1 } } }
+Showing similarities for: testing/test2.vs.test3 + testing/test1.vs.test2 + testing/test1.vs.test3
+{ '1': 
+   { same: 5,
+     diff: 6,
+     child: 
+      { '2': 
+         { same: 5,
+           diff: 6,
+           child: 
+            { '3': 
+               { same: 5,
+                 diff: 6,
+                 child: 
+                  { '4': 
+                     { same: 5,
+                       diff: 2,
+                       child: 
+                        { '5': 
+                           { same: 5,
+                             diff: 2,
+                             child: 
+                              { '6': 
+                                 { same: 2,
+                                   diff: 2,
+                                   child: 
+                                    { '7': 
+                                       { same: 2,
+                                         diff: 2,
+                                         child: 
+                                          { '8': 
+                                             { same: 2,
+                                               diff: 0,
+                                               child: 
+                                                { same: 1,
+                                                  'hello.txt': { same: 2, diff: 0, child: { same: 1 } } } },
+                                            same: 1 } },
+                                      same: 1 } },
+                                same: 1,
+                                'hi.txt': { same: 2, diff: 0, child: { same: 1 } } } },
+                          same: 1 } },
+                    same: 1 } },
+              same: 1 } },
+        same: 1 } } }

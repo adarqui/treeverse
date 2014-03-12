@@ -14,6 +14,7 @@ var store_path = function(g, s, last) {
 	var a = s.split('/');
 	var gn = g;
 	for (var v in a) {
+		if(v == 0) continue;
 		v = parseInt(v, 10);
 		var x = a[v];
 		var p = gn[x];
@@ -26,6 +27,7 @@ var store_path = function(g, s, last) {
 		}
 		gn = gn[x].child;
 		if(last == 'identical') {
+			if (c.same == undefined) { c.same = 0; }
 			c.same = c.same + 1;
 		} else {
 			if (c.diff == undefined) { c.diff = 0; }
@@ -43,6 +45,7 @@ var treeverse = function(j, p) {
 		} else if (d.diff == 0) {
 			if(d.child == undefined) continue;
 			if(Object.keys(d.child).length > 1) {
+//				console.log(p);
 				console.log(p.join('/')+'/'+v);
 			}
 		} else {
@@ -115,7 +118,9 @@ var main = function(argc, argv) {
 		}
 
 		for(var v in js) {
-			treeverse(js[v], []);
+			var p = [];
+			p.push(v);
+			treeverse(js[v], p);
 		}
 	});
 
