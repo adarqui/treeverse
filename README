@@ -1,3 +1,9 @@
+first, diff:
+$ cd testing
+$ diff --brief test1 test2 > test1.vs.test2
+$ diff --brief test1 test3 > test1.vs.test3
+$ diff --brief test2 test3 > test2.vs.test3
+
 $ ./treeverse.js testing/test2.vs.test3 testing/test1.vs.test3
 
 Showing similarities for: testing/test2.vs.test3
