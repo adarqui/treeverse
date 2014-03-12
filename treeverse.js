@@ -58,14 +58,25 @@ var main = function(argc, argv) {
 
 	var diff, lines, files, i;
 
+	if (argc < 3) {
+		usage();
+	}
+
 	files = argv.slice(2, argc);
 
 	var diffs = files.map(function(d) {
-		return fs.readFileSync(d).toString();
+		try {
+			return fs.readFileSync(d).toString();
+		} catch (err) {
+			console.log("ERROR:", err);
+			process.exit();
+		}
 	});
 
-	files.push(files.join(' + '));
-	diffs.push(diffs.join(''));
+	if (diffs.length > 1) {
+		files.push(files.join(' + '));
+		diffs.push(diffs.join(''));
+	}
 
 	i = 0;
 	diffs.forEach(function(x) {
