@@ -1,3 +1,7 @@
+*IMPORTANT* this is wrecked. need to fix a little issue.
+
+
+
 first, diff:
 $ cd testing
 $ diff --brief -s -r test1 test2 > test1.vs.test2
