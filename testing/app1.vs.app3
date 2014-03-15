@@ -1,0 +1,4 @@
+Only in app1/cake: libs
+Only in app1/cake: models
+Only in app3/cake: vendors
+Only in app1: webroot

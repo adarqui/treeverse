@@ -38,21 +38,17 @@ var store_path = function(g, s, last) {
 
 
 var treeverse = function(j, p) {
-	if(j.child == undefined) return;
+	if (j.diff == 0) {
+		if(Object.keys(j.child).length > 1) {
+			console.log(p.join('/'));
+			return
+		}
+	}
 	for(var v in j.child) {
 		var d = j.child[v];
-		if (typeof v !== 'string') {
-		} else if (d.diff == 0) {
-			if(d.child == undefined) continue;
-			if(Object.keys(d.child).length > 1) {
-//				console.log(p);
-				console.log(p.join('/')+'/'+v);
-			}
-		} else {
-			p.push(v);
-			treeverse(d, p);
-			p.pop();
-		}
+		p.push(v);
+		treeverse(d, p);
+		p.pop();
 	}
 }
 
@@ -123,13 +119,6 @@ var main = function(argc, argv) {
 			treeverse(js[v], p);
 		}
 	});
-
-
-	/*
-	for(var v in js) {
-		treeverse(js[v], []);
-	}
-	*/
 
 }
 

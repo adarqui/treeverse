@@ -1,0 +1,4 @@
+Files app1/cake/libs/hi and app2/cake/libs/hi are identical
+Files app1/cake/models/hi and app2/cake/models/hi are identical
+Only in app1/webroot: index.html
+Only in app1/webroot: index.js
